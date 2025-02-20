@@ -21,7 +21,7 @@ interface LoginResponse {
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = 'https://shark-app-5llz9.ondigitalocean.app:4200/sneakRproject-1.0-SNAPSHOT/sneakRproject-1.0-SNAPSHOT/webresources/userek/login';
+  private apiUrl = 'http://shark-app-5llz9.ondigitalocean.app:4200/sneakRproject-1.0-SNAPSHOT/sneakRproject-1.0-SNAPSHOT/webresources/userek/login';
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -32,7 +32,7 @@ export class LoginService {
   };
 
   return this.http.post<any>(
-    'https://shark-app-5llz9.ondigitalocean.app:4200/sneakRproject-1.0-SNAPSHOT/sneakRproject-1.0-SNAPSHOT/webresources/userek/login',
+    'http://shark-app-5llz9.ondigitalocean.app:4200/sneakRproject-1.0-SNAPSHOT/sneakRproject-1.0-SNAPSHOT/webresources/userek/login',
     body,
     {
       headers: new HttpHeaders({

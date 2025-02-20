@@ -19,7 +19,7 @@ interface ShoesResponse {
   providedIn: 'root'
 })
 export class ShoeService {
-  private apiUrl = 'https://shark-app-5llz9.ondigitalocean.app:4200/sneakRproject-1.0-SNAPSHOT/webresources/cipok/getAllShoesData';
+  private apiUrl = 'http://shark-app-5llz9.ondigitalocean.app:4200/sneakRproject-1.0-SNAPSHOT/webresources/cipok/getAllShoesData';
 
   constructor(private http: HttpClient) { }
 
@@ -32,12 +32,12 @@ uploadShoe(shoeData: any): Observable<any> {
 }
 
 updateShoe(id: number, shoeData: any): Observable<any> {
-  const updateUrl = `https://shark-app-5llz9.ondigitalocean.app:4200/sneakRproject-1.0-SNAPSHOT/webresources/cipok/updateShoe/${id}`;
+  const updateUrl = `http://shark-app-5llz9.ondigitalocean.app:4200/sneakRproject-1.0-SNAPSHOT/webresources/cipok/updateShoe/${id}`;
   return this.http.put(updateUrl, shoeData);
 }
 
 deleteShoe(id: number): Observable<any> {
-  const deleteUrl = `https://shark-app-5llz9.ondigitalocean.app:4200/sneakRproject-1.0-SNAPSHOT/webresources/cipok/deleteShoes/${id}`;
+  const deleteUrl = `http://shark-app-5llz9.ondigitalocean.app:4200/sneakRproject-1.0-SNAPSHOT/webresources/cipok/deleteShoes/${id}`;
   return this.http.delete(deleteUrl);
 }
 
