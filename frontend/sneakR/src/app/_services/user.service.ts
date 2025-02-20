@@ -14,7 +14,7 @@ interface UserApiResponse {
   providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = 'https://10.244.12.2:4200/sneakRproject-1.0-SNAPSHOT/webresources/userek';
+  private baseUrl = 'http://127.0.0.1:8080/sneakRproject-1.0-SNAPSHOT/webresources/userek';
 
   constructor(private http: HttpClient) { }
 

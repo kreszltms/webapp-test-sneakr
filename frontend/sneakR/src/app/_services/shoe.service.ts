@@ -19,7 +19,7 @@ interface ShoesResponse {
   providedIn: 'root'
 })
 export class ShoeService {
-  private apiUrl = 'https://10.244.12.2:4200/sneakRproject-1.0-SNAPSHOT/webresources/cipok/getAllShoesData';
+  private apiUrl = 'http://127.0.0.1:8080/sneakRproject-1.0-SNAPSHOT/webresources/cipok/getAllShoesData';
 
   constructor(private http: HttpClient) { }
 
@@ -27,17 +27,17 @@ export class ShoeService {
   return this.http.get(this.apiUrl);
 }
 uploadShoe(shoeData: any): Observable<any> {
-  const uploadUrl = 'https://10.244.12.2:4200/sneakRproject-1.0-SNAPSHOT/webresources/cipok/uploadShoes';
+  const uploadUrl = 'http://127.0.0.1:8080/sneakRproject-1.0-SNAPSHOT/webresources/cipok/uploadShoes';
   return this.http.post(uploadUrl, shoeData);
 }
 
 updateShoe(id: number, shoeData: any): Observable<any> {
-  const updateUrl = `https://10.244.12.2:4200/sneakRproject-1.0-SNAPSHOT/webresources/cipok/updateShoe/${id}`;
+  const updateUrl = `http://127.0.0.1:8080/sneakRproject-1.0-SNAPSHOT/webresources/cipok/updateShoe/${id}`;
   return this.http.put(updateUrl, shoeData);
 }
 
 deleteShoe(id: number): Observable<any> {
-  const deleteUrl = `https://10.244.12.2:4200/sneakRproject-1.0-SNAPSHOT/webresources/cipok/deleteShoes/${id}`;
+  const deleteUrl = `http://127.0.0.1:8080/sneakRproject-1.0-SNAPSHOT/webresources/cipok/deleteShoes/${id}`;
   return this.http.delete(deleteUrl);
 }
 
