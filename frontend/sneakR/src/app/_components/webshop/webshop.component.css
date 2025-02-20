@@ -1,0 +1,578 @@
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #222;
+    transition: all 0.3s ease;
+    z-index: 999;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.sidebar.active {
+    right: 0;
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar .submenu {
+    display: none;
+    padding-left: 20px;
+    background-color: #444;
+    list-style: none;
+}
+
+.sidebar .submenu.active {
+    display: block;
+}
+
+.sidebar .submenu li {
+    padding: 10px 0;
+}
+
+.sidebar .submenu a {
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.sidebar .submenu .submenu {
+    background-color: #555;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.sidebar li {
+    margin: 25px 0;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+.sidebar a:hover {
+    color: #007bff;
+}
+
+/* Backdrop Styles */
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Main Content Styles */
+h2 {
+    text-align: center;
+    font-size: 1.8em;
+    margin: 20px 0;
+}
+
+.hero-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background-color: #222;
+    color: white;
+    text-align: center;
+}
+
+.feature {
+    flex: 1;
+    padding: 10px;
+}
+
+.feature i {
+    display: block;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+/* Product Grid Styles */
+.products-section {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.product-card {
+    background-color: white;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    background: none;
+}
+
+.size-info h4 {
+    margin-bottom: 5px;
+}
+
+.size-value {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #2A7B47;
+    padding: 8px 15px;
+    border: 2px solid #2A7B47;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
+}
+
+.text-container {
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-card p {
+    margin: 8px 0;
+    font-size: 1.1em;
+}
+
+.product-card p:last-child {
+    color: #2A7B47;
+    font-weight: 700;
+    font-size: 1.2em;
+    margin-top: auto;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.footer a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5em;
+}
+
+.newsletter input {
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.newsletter button {
+    padding: 10px 20px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
+    .image-container {
+        padding-top: 80%;
+    }
+}
+
+/* Product Modal Styles */
+.product-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1001;
+    display: none;
+    overflow-y: auto;
+}
+
+.product-modal.active {
+    display: block;
+}
+
+.modal-content {
+    background: white;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    gap: 30px;
+    position: relative;
+}
+
+.modal-image {
+    flex: 1;
+}
+
+.modal-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.modal-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.size-selector h4 {
+    margin-bottom: 10px;
+}
+
+.size-options {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.size-options button {
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.size-options button.selected {
+    background: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.add-to-cart {
+    background: #2A7B47;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 20px;
+}
+
+.add-to-cart:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+.description {
+    color: #666;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        flex-direction: column;
+        margin: 20px;
+        padding: 20px;
+    }
+    
+    .modal-image {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+
+/* Kosár menü stílusok */
+.cart-wrapper {
+    position: fixed;
+    top: 20px;
+    right: 70px;
+    margin-right: 20px;
+    z-index: 1001;
+  }
+  
+  .icon-btn.cart-btn {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 45px;
+    height: 45px;
+  }
+  
+  .cart-menu {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    width: 350px;
+    background: #1a1a1a;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .cart-menu.active {
+    max-height: 70vh;
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  /* A többi stílus ugyanaz, mint a resell komponensnél */
+  .cart-menu-header h4 {
+    margin: 0 0 15px 0;
+    color: #fff;
+    font-size: 1.1rem;
+  }
+  
+  .cart-items-list {
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+  
+  .cart-menu-item {
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.05);
+    margin-bottom: 10px;
+    position: relative;
+  }
+  
+  .cart-menu-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.item-info {
+    flex-grow: 1;
+    color: #fff;
+}
+
+.item-info p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.item-info small {
+    color: #2A7B47;
+    font-weight: bold;
+}
+
+.item-remove-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: #ff4444;
+    border: none;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
+}
+
+.item-remove-btn:hover {
+    background: #cc0000;
+}
+
+.view-cart-btn {
+    width: 100%;
+    background: #2A7B47;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.view-cart-btn:hover {
+    background: #1F5C37;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+}
+
+.empty-cart i {
+    font-size: 2rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+    .cart-menu {
+        width: 300px;
+        right: -20px;
+    }
+}
+
+
+/* Kosár ikon és Navbar közötti térköz javítása */
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Ezzel biztosítjuk a megfelelő térközt */
+    position: relative;
+    z-index: 1000;
+}
+
+
+.icon-btn.cart-btn {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    width: 50px;
+    height: 47px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    position: relative;
+    z-index: 1001;
+}
+
+.icon-btn.cart-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.icon-btn.cart-btn i {
+    font-size: 22px;
+}
+
+.logo-img {
+    height: 50px;
+    width: 50px;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    border: 2px solid #333;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+.logo-img:hover {
+    transform: rotate(-10deg) scale(1.05);
+}
+

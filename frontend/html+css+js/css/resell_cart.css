@@ -1,0 +1,175 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header/navbar */
+header {
+    background: #2A7B47;
+}
+
+/* Navbar container flexbox-al */
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Egyenletesen osztja el a logo-t és az ikonokat */
+}
+
+/* Logo igazítása */
+.logo img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Ikonok igazítása jobbra */
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 24px;
+}
+
+/* Navbar styling */
+.navbar {
+    padding: 15px;
+    background-color: #2A7B47;
+    box-sizing: border-box;
+}
+
+
+/* Logo */
+/* .logo img {
+    height: 70px;
+    width: 70px;
+    /* object-fit: cover; */
+    /* border-radius: 50%;
+    cursor: pointer;
+    
+} */
+
+/* Navbar ikonok jobbra */
+/* .nav-icons {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 20px;
+} */
+
+/* Hamburger és User ikon mérete */
+/* .hamburger-menu,
+.user-icon {
+    font-size: 30px;
+    cursor: pointer;
+} */
+
+/* Hover effekt az ikonokra */
+.nav-icons i {
+    transition: transform 0.2s;
+}
+
+.nav-icons i:hover {
+    transform: scale(1.2);
+}
+/* Mobil menü */
+.mobile-nav {
+    list-style: none;
+    padding: 0;
+    display: none;
+    background: #2A7B47;
+    position: absolute;
+    top: 60px;
+    right: 0;
+}
+
+.mobile-nav.active {
+    display: block;
+}
+
+.mobile-nav li {
+    padding: 15px;
+}
+
+/* Checkout form */
+main {
+    padding: 20px;
+    max-width: 900px;
+    background: #1e1e1e;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 0 15px #000;
+}
+
+/* Form input styling */
+form input[type="text"],
+form input[type="email"],
+form textarea,
+form select,
+form button {
+    background: #252525;
+    padding: 15px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+form button {
+    background: #2A7B47;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+form button:hover {
+    background: #1F5C37;
+}
+
+/* Kép megjelenítés */
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+}
+
+.product-img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 15px;
+}
+
+/* Proper spacing between form elements */
+form input[type="text"],
+form input[type="email"],
+form textarea,
+form select {
+    font-size: 18px;
+    margin-bottom: 15px;
+    padding: 20px;
+}
+
+/* Hamburger and user icons */
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.hidden {
+    display: none;
+}

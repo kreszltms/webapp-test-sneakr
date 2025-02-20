@@ -1,0 +1,71 @@
+<app-webshopnavbar></app-webshopnavbar>
+<body>
+
+<section class="filters-container">
+  <h1 class="page-title animate-title">{{ getTitle() }}</h1>
+  <div class="filter-controls">
+    <!-- Size Selector -->
+    <div class="filter-group">
+      <h3 class="filter-label">Méret</h3>
+      <div class="size-buttons">
+        <button *ngFor="let size of availableSizes" 
+                [class.active]="selectedSize === size.toString()"
+                (click)="selectedSize = size.toString(); applyFilters()"
+                class="size-button">
+          {{ size }}
+        </button>
+        <button [class.active]="!selectedSize"
+                (click)="selectedSize = ''; applyFilters()"
+                class="size-button">
+          Összes
+        </button>
+      </div>
+    </div>
+
+    <!-- Price Range -->
+    <div class="filter-group">
+      <h3 class="filter-label">Ár tartomány</h3>
+      <div class="dual-range">
+        <div class="slider-track"></div>
+        <input type="range" 
+               [min]="absoluteMinPrice"
+               [max]="absoluteMaxPrice"
+               [(ngModel)]="maxPrice"
+               (input)="applyFilters()"
+               class="range-input">
+      </div>
+      <br>
+      <div class="price-values">
+        <span class="maxPrice">{{ maxPrice | currency:'HUF':'symbol':'1.0-0' }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product-grid">
+  <div class="product-card" *ngFor="let product of filteredProducts">
+    <div class="card-inner">
+      <div class="image-wrapper">
+        <img [src]="product.image" [alt]="product.name" class="product-image">
+      </div>
+      <div class="product-details">
+        <div class="brand-badge">{{ product.brand }}</div>
+        <h3 class="product-name">{{ product.name }}</h3>
+        <div class="size-container">
+          <div class="size-pill" *ngFor="let size of product.sizes">{{ size }}</div>
+        </div>
+        <div class="price-row">
+          <span class="price">{{ product.price | currency:'HUF':'symbol':'1.0-0' }}</span>
+          <button class="add-to-cart" (click)="addToCart(product)">
+            <span>Kosárba</span>
+            <svg class="cart-icon" viewBox="0 0 24 24">
+              <path d="M17 18a2 2 0 1 1-2-2 2 2 0 0 1 2 2zM7 18a2 2 0 1 1-2-2 2 2 0 0 1 2 2zM1 2h3.27l.94 2H20a1 1 0 0 1 1 1c0 .17-.05.34-.12.5l-3.58 6.47c-.34.61-1 1.03-1.79 1.03H8.1l-.9 1.63-.03.12a.25.25 0 0 0 .25.25H19v2H7a2 2 0 0 1-2-2c0-.35.09-.68.24-.96l1.36-2.45L3 4H1z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>

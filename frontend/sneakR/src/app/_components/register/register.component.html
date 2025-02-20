@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regisztráció</title>
+</head>
+<body>
+    <div class="container">
+        <h1>SNEAKR</h1>
+        <form id="registration-form" (ngSubmit)="onSubmit($event)">
+            <div class="input-group">
+                <input type="email" id="email" placeholder="Email" required [(ngModel)]="email" name="email" (input)="checkInputs()">
+                <small class="error" [hidden]="emailValid || email === ''">Érvényes email címet adj meg!</small>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Jelszó" required [(ngModel)]="password" name="password" (input)="checkInputs()">
+                <small class="error" [hidden]="passwordValid || password === ''">A jelszónak legalább 8 karakter hosszúnak kell lennie, és tartalmaznia kell számot, kis- és nagybetűt, valamint speciális karaktert!</small>
+            </div>
+            <div class="input-group">
+                <input type="text" id="nev" placeholder="Név" required [(ngModel)]="nev" name="nev" (input)="checkInputs()">
+                <small class="error" [hidden]="nevValid || nev === ''">A név megadása kötelező!</small>
+            </div>
+            <button type="submit" id="submit-btn" [disabled]="!isFormValid || submitting">{{ submitting ? 'Regisztrálás...' : 'Regisztráció' }}</button>
+        </form>
+        <p>Már regisztráltál korábban? <a [routerLink]="'/login'" class="register-button">Bejelentkezés</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!-- shoe-controller.component.html -->
+<div class="shoe-controller-container">
+
+    <button class="upload-button" (click)="openUploadModal()">
+        <i class="fas fa-plus"></i>
+        Cipő feltöltése
+    </button>
+
+    <div class="custom-modal" [class.active]="showUploadModal">
+        <div class="modal-content">
+            <i class="fas fa-upload modal-icon"></i>
+            <h3 class="modal-title">Új cipő feltöltése</h3>
+    
+            <form class="upload-form" (ngSubmit)="onUploadSubmit(uploadForm)" #uploadForm="ngForm">
+                <div class="input-group">
+                    <input type="text" name="nev" placeholder=" " required ngModel>
+                    <label>Termék neve</label>
+                </div>
+    
+                <div class="input-group">
+                    <select name="marka" required ngModel>
+                        <option value="" disabled selected></option>
+                        <option value="Nike">Nike</option>
+                        <option value="Adidas">Adidas</option>
+                        <option value="Puma">Puma</option>
+                        <option value="Reebok">Reebok</option>
+                        <option value="Converse">Converse</option>
+                        <option value="Jordan">Jordan</option>
+                        <option value="Yeezy">Yeezy</option>
+                        <option value="New Balance">New Balance</option>
+                        <option value="Alexander McQueen">Alexander McQueen</option>
+                        <option value="Travis Scott">Travis Scott</option>
+                        
+                    </select>
+                    <label>Márka</label>
+                </div>
+    
+                <div class="input-group">
+                    <select name="nem" required ngModel>
+                        <option value="" disabled selected></option>
+                        <option value="Férfi">Férfi</option>
+                        <option value="Nő">Nő</option>
+                    </select>
+                    <label>Nem</label>
+                </div>
+    
+                <div class="input-group">
+                    <select name="allapot" required ngModel>
+                        <option value="" disabled selected></option>
+                        <option value="használt">Használt</option>
+                        <option value="új">Új</option>
+                    </select>
+                    <label>Állapot</label>
+                </div>
+    
+                <div class="input-group">
+                    <input type="number" name="meret" placeholder=" " required ngModel>
+                    <label>Méret</label>
+                </div>
+    
+                <div class="input-group">
+                    <input type="number" name="ar" placeholder=" " min="1" required ngModel>
+                    <label>Ár (Ft)</label>
+                </div>
+    
+                <div class="input-group">
+                    <input type="url" name="img" placeholder=" " required ngModel>
+                    <label>Képlink</label>
+                </div>
+    
+                <div class="modal-buttons">
+                    <button type="button" class="modal-cancel-button" (click)="closeUploadModal()">
+                        Mégse
+                    </button>
+                    <button type="submit" class="modal-confirm-button">
+                        Feltöltés
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="success-modal" [class.active]="showUploadSuccessModal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle modal-icon"></i>
+            <h3 class="modal-title">Sikeres feltöltés!</h3>
+            <button class="modal-close-button" (click)="onCloseUploadSuccessModal()">
+                Vissza a kezelőpulthoz
+            </button>
+        </div>
+    </div>
+
+    <div class="custom-modal" [class.active]="showConfirmModal">
+        <div class="modal-content">
+            <i class="fas fa-exclamation-circle modal-icon"></i>
+            <h3 class="modal-title">Biztos törlöd ezt a cipőt?</h3>
+            <p class="shoe-name">{{ selectedShoeName }}</p>
+            <div class="modal-buttons">
+                <button class="modal-cancel-button" (click)="cancelDelete()">Mégse</button>
+                <button class="modal-confirm-button" (click)="confirmDelete()">Törlés</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-modal" [class.active]="showSuccessModal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle modal-icon"></i>
+            <h3 class="modal-title">Sikeres törlés!</h3>
+            <p class="deleted-shoe-name">{{ selectedShoeName }}</p>
+            <button class="modal-close-button" (click)="onCloseSuccessModal()">
+                Vissza a kezelőpulthoz
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="isAdmin; else accessDenied">
+        <h1>Cipők Kezelése</h1>
+
+        <div *ngIf="shoes.length > 0">
+            Betöltött cipők: {{ shoes.length }}
+        </div>
+
+        <div class="table-responsive">
+            <table class="shoes-table" *ngIf="shoes.length > 0">
+                <thead>
+                    <tr>
+                        <th>Kép</th>
+                        <th>Név</th>
+                        <th>Márka</th>
+                        <th>Ár</th>
+                        <th>Állapot</th>
+                        <th>Méret</th>
+                        <th>Nem</th>
+                        <th>Funkció</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let shoe of shoes">
+                        <td><img [src]="shoe.img" class="shoe-image" alt="Shoe image"></td>
+                        <td>{{ shoe.nev }}</td>
+                        <td>{{ shoe.marka }}</td>
+                        <td>{{ shoe.ar | currency:'HUF':'symbol':'1.0-0' }}</td>
+                        <td>{{ shoe.allapot }}</td>
+                        <td>{{ shoe.meret }}</td>
+                        <td>{{ shoe.nem }}</td>
+                        <td>
+                            <button class="delete-btn" (click)="deleteShoe(shoe)">Törlés</button>
+                            <button class="edit-btn" (click)="openEditModal(shoe)">Módosítás</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+
+        <button class="back-button" (click)="goBackToProfile()">Vissza a profilra</button>
+
+        <div class="loading" *ngIf="shoes.length === 0">
+            Loading shoes...
+        </div>
+    </div>
+
+    <ng-template #accessDenied>
+        <div class="error-container">
+            <h2>404 - Nem található</h2>
+            <p>Nincs jogosultságod az oldal megtekintéséhez!</p>
+            <button class="back-button" (click)="goBack()">Vissza a főoldalra</button>
+        </div>
+    </ng-template>
+</div>

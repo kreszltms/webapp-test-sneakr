@@ -1,0 +1,104 @@
+<body>
+    <!-- Navigációs sáv -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+            <ul [class.open]="menuOpen">
+                <li><a [routerLink]="['/resell']">←</a></li>
+                <li><a [routerLink]="['/resell-user']" class="active">Profil</a></li>
+                <li><a (click)="scroll(currentListings)">Jelenlegi Hirdetések</a></li>
+                <li><a (click)="scroll(pastListings)">Korábbi Hirdetések</a></li>
+                <li><a (click)="scroll(purchasedItems)">Vásárolt Termékek</a></li>
+                <li *ngIf="user.admin === 'igen'">
+                    <a [routerLink]="['/admin']">Felhasználók kezelése</a>
+                </li>
+                <li *ngIf="user.admin === 'igen'">
+                    <a [routerLink]="['/shoe-controller']">Cipők kezelése</a>
+                </li>
+                <li><a [routerLink]="['/login']">Kijelentkezés</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Felhasználói Profil -->
+    <section id="profile" class="profile-section">
+        <header>
+            <h1>Üdvözöllek, <span style="color: #2A7B47;">{{ user.nev || 'Felhasználó' }}</span>!</h1>
+            <div class="profile-info">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrAIH5ePjPpc06-hopmyUZNsVbBPvZA0XGmQ&s"
+                    alt="Profilkép" class="avatar">
+                <p>📧 {{ user.email }}</p>
+                <p>🌟 Aktív hirdetések: {{ userShoes.length }} | 🛍️ Eladott termékek: 3</p>
+            </div>
+        </header>
+    </section>
+
+    <!-- Jelenlegi Hirdetések -->
+    <section #currentListings id="current-listings" class="listings-section">
+        <h2>Jelenlegi Hirdetések</h2>
+        <div class="slider-container">
+            <button class="slider-arrow prev" (click)="prevSlide()" [disabled]="currentSlide === 0">
+                &lt;
+            </button>
+    
+            <div class="slider-wrapper">
+                <div class="slider-track" [style.transform]="'translateX(-' + (currentSlide * 100) + '%)'">
+                    <div *ngFor="let slide of slides" class="slide">
+                        <div *ngFor="let shoe of slide" class="card">
+                            <div class="card-img-container">
+                                <img [src]="shoe.img" [alt]="shoe.nev">
+                            </div>
+                            <div class="card-content">
+                                <h3>{{ shoe.nev }}</h3>
+                                <p>💰 Ár: {{ shoe.ar | currency:'HUF':'symbol':'1.0-0' }}</p>
+                                <p>🏷️ Állapot: {{ shoe.allapot }}</p>
+                                <p>👟 Méret: {{ shoe.meret }}</p>
+                                <button (click)="deleteListing(shoe.id, $event)" class="delete-btn">
+                                    🗑️ Törlés
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <button class="slider-arrow next" (click)="nextSlide()" [disabled]="currentSlide === maxSlides">
+                &gt;
+            </button>
+        </div>
+    </section>
+
+    <!-- Korábbi Hirdetések -->
+    <section #pastListings id="past-listings" class="listings-section">
+        <h2>Korábbi Hirdetések</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://sneakcenter.com/cdn/shop/products/nike-dunk-low-lottery-grey-sneakcenter-1-34784944488715.png?v=1701593658" alt="Nike Dunk Low">
+                </div>
+                <div class="card-content">
+                    <h3>Nike Dunk Low</h3>
+                    <p>⏳ Elkelt: 2024-11-15</p>
+                    <p>💸 Végső ár: 25,000 Ft</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vásárolt Termékek -->
+    <section #purchasedItems id="purchased-items" class="listings-section">
+        <h2>Vásárolt Termékek</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-img-container">
+                    <img src="https://www.buzzsneakers.hu/files/thumbs/files/images/slike_proizvoda/media/VN0/VN000CR5B9M/images/thumbs_800/VN000CR5B9M_800_800px.jpg" alt="Vans Old Skool">
+                </div>
+                <div class="card-content">
+                    <h3>Vans Old Skool</h3>
+                    <p>📅 Vásárlás dátuma: 2024-12-01</p>
+                    <p>⭐ Értékelés: 5/5</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+
+<main class="resell-products">
+    <aside class="filters">
+        <h3>Szűrés</h3>
+        
+        <label for="brand">Márka:</label>
+        <select id="brand" [(ngModel)]="selectedBrand" (change)="applyFilters()">
+            <option value="">Összes</option>
+            <option *ngFor="let brand of brands" [value]="brand">{{ brand }}</option>
+        </select>
+
+        <label for="gender">Nem:</label>
+        <select id="gender" [(ngModel)]="selectedGender" (change)="applyFilters()">
+            <option value="">Összes</option>
+            <option value="Férfi">Férfi</option>
+            <option value="Nő">Női</option>
+        </select>
+
+        <label for="condition">Állapot:</label>
+        <select id="condition" [(ngModel)]="selectedCondition" (change)="applyFilters()">
+            <option value="">Összes</option>
+            <option value="Új">Új</option>
+            <option value="Használt">Használt</option>
+        </select>
+
+        <label for="size">Méret:</label>
+        <select id="size" [(ngModel)]="selectedSize" (change)="applyFilters()">
+            <option [ngValue]="null">Összes</option>
+            <option *ngFor="let size of sizes" [ngValue]="size">{{ size }}</option>
+        </select>
+
+        <label for="priceRange">Maximum ár:</label>
+        <input type="range" id="priceRange" [(ngModel)]="maxPrice" [min]="0" [max]="originalMaxPrice" step="1000"
+            (change)="applyFilters()">
+        <p>Max: {{ maxPrice | currency:'HUF' }}</p>
+
+        <button class="filter-button" (click)="applyFilters()">Szűrés</button>
+        <button class="reset-button" (click)="resetFilters()">Visszaállítás</button>
+    </aside>
+
+    <section class="product-list">
+        <div *ngFor="let product of filteredProducts" class="product-card">
+            <img [src]="product.img" alt="{{ product.nev }}">
+            <h3>{{ product.nev }}</h3>
+            <p><strong>Márka:</strong> {{ product.marka }}</p>
+            <p><strong>Nem:</strong> {{ product.nem }}</p>
+            <p><strong>Méret:</strong> {{ product.meret }}</p>
+            <p class="product-condition">{{ product.allapot }}</p>
+            <p><strong>Ár:</strong> {{ product.ar | currency:'HUF':'symbol':'1.0-0' }}</p>
+    
+            <div class="seller-info">
+                <span class="seller-name">{{ product.seller }}</span>
+            </div>
+    
+            <button (click)="addToCart(product)">Kosárba</button>
+        </div>
+    </section>
+</main>

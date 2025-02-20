@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell - Sneakr Resell</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<app-navbar></app-navbar>
+<body>
+    <main class="sell-section">
+        <div class="sell-container">
+            <h1 class="gradient-title">Termék eladása</h1>
+            
+            <form class="sell-form" (ngSubmit)="onSubmit(sellForm)" #sellForm="ngForm">
+                <div class="upload-container" (click)="openLinkModal()">
+                    <label class="upload-label">
+                        <i class="fas fa-link"></i>
+                        <span>Kattints ide képlink hozzáadásához</span>
+                        <small>Csak közvetlen képlinkek (URL)</small>
+                    </label>
+                    <div class="preview-grid" *ngIf="imageUrl">
+                        <img [src]="imageUrl" alt="Előnézet" class="image-preview">
+                    </div>
+                    <div *ngIf="imageError" class="error-message">Érvényes képlink megadása kötelező!</div>
+                </div>
+
+                <!-- Link modal -->
+                <div class="success-modal" [class.active]="showLinkModal">
+                    <div class="modal-content">
+                        <i class="fas fa-image modal-icon"></i>
+                        <h3 class="modal-title">Képlink hozzáadása</h3>
+                        <div class="input-group">
+                            <input type="url" 
+                                   placeholder="https://példa.com/kép.jpg" 
+                                   [(ngModel)]="imageUrl"
+                                   name="imageUrl"
+                                   required>
+                        </div>
+                        <div class="form-buttons">
+                            <button type="button" class="cancel-button" (click)="closeLinkModal()">
+                                Mégse
+                            </button>
+                            <button type="button" class="submit-button" (click)="confirmImage()">
+                                Mentés
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" name="nev" placeholder=" " required ngModel>
+                    <label>Termék neve</label>
+                </div>
+                
+                <div class="input-group">
+                    <select name="marka" required ngModel>
+                        <option value="" disabled selected></option>
+                        <option value="Nike">Nike</option>
+                        <option value="Adidas">Adidas</option>
+                        <option value="Puma">Puma</option>
+                        <option value="Reebok">Reebok</option>
+                        <option value="Converse">Converse</option>
+                        <option value="Jordan">Jordan</option>
+                        <option value="Yeezy">Yeezy</option>
+                        <option value="New Balance">New Balance</option>
+                        <option value="Alexander McQueen">Alexander McQueen</option>
+                        <option value="Travis Scott">Travis Scott</option>
+                    </select>
+                    <label>Márka</label>
+                </div>
+                
+                <div class="input-group">
+                    <select name="nem" required ngModel>
+                        <option value="" disabled selected></option>
+                        <option value="Férfi">Férfi</option>
+                        <option value="Női">Nő</option>
+                    </select>
+                    <label>Nem</label>
+                </div>
+                
+                <div class="input-group">
+                    <select name="allapot" required ngModel>
+                        <option value="" disabled selected></option>
+                        <option value="Használt">Használt</option>
+                        <option value="Új">Új</option>
+                    </select>
+                    <label>Állapot</label>
+                </div>
+                
+                <div class="input-group">
+                    <input type="number" name="meret" placeholder=" " required ngModel>
+                    <label>Méret</label>
+                </div>
+                
+                <div class="input-group price-group">
+                    <input type="number" name="ar" placeholder=" " min="1" required ngModel>
+                    <label>Ár (Ft)</label>
+                </div>
+                <div class="input-group owner-group">
+                    <select name="tulajdonos" disabled class="owner-select">
+                        <option>{{ currentUser.nev }}</option>
+                    </select>
+                    <label class="always-top">Tulajdonos</label>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="cancel-button" (click)="onCancel()">
+                        <i class="fas fa-times"></i>
+                        Mégse
+                    </button>
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-upload"></i>
+                        Feltöltés
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="success-modal" [class.active]="showSuccessModal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle modal-icon"></i>
+            <h3 class="modal-title">Sikeres feltöltés!</h3>
+            <button class="modal-close-button" (click)="onCloseSuccessModal()">
+                Vissza a főoldalra
+            </button>
+        </div>
+    </div>
+</body>
+</html>

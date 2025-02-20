@@ -1,0 +1,254 @@
+<div class="logo">
+  <img src="assets/webshopicon.png" alt="Resell Sneaker Logo" 
+       (click)="navigateToTarget3()" 
+       class="logo-img">
+</div>
+<div class="cart-wrapper">
+  <div class="icon-btn cart-btn" (click)="toggleCartMenu()">
+    <i class="fas fa-shopping-cart"></i>
+    <span *ngIf="cartCount > 0" class="icon-count">{{ cartCount }}</span>
+  </div>
+
+  <div class="cart-menu" [class.active]="showCartMenu">
+    <div class="cart-menu-header">
+      <h4>Kosár tartalma</h4>
+    </div>
+
+    <div class="cart-items-list" *ngIf="cartItems.length > 0; else emptyCart">
+      <div *ngFor="let item of cartItems" class="cart-menu-item">
+        <button class="item-remove-btn" (click)="removeItem(item.id)">×</button>
+        <img [src]="item.image" [alt]="item.name">
+        <div class="item-info">
+          <p>{{ item.name }}</p>
+          <small>{{ item.price | currency:'HUF' }}</small>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #emptyCart>
+      <div class="empty-cart">
+        <i class="fas fa-shopping-basket"></i>
+        <p>A kosár üres</p>
+      </div>
+    </ng-template>
+
+    <div class="cart-menu-footer">
+      <button class="view-cart-btn" [routerLink]="['/webshop-cart']">Kosár megtekintése</button>
+    </div>
+  </div>
+</div>
+
+<button class="hamburger-menu" (click)="toggleMenu()">
+    <i [class]="isMenuOpen ? 'fas fa-times' : 'fas fa-bars'"></i>
+  </button>
+  
+  <nav class="sidebar" [class.active]="isMenuOpen">
+    <ul>
+        <!-- Márkák -->
+        <li>
+          <a (click)="toggleSubmenu('brands'); $event.preventDefault()" href="#">Márkák</a>
+          <ul class="submenu" [class.active]="menuState['brands']">
+            <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{brand: 'Jordan'}">Jordan</a></li>
+            <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{brand: 'Nike'}">Nike</a></li>
+            <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{brand: 'Adidas'}">Adidas</a></li>
+            <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{brand: 'Yeezy'}">Yeezy</a></li>
+            <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{brand: 'New Balance'}">New Balance</a></li>
+            <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{brand: 'Alexander McQueen'}">Alexander McQueen</a></li>
+            <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{brand: 'Travis Scott'}">Travis Scott</a></li>
+            <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{brand: 'Reebok'}">Reebok</a></li>
+            <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{brand: 'Converse'}">Converse</a></li>
+            <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{brand: 'Puma'}">Puma</a></li>
+          </ul>
+        </li>
+    
+        <!-- Sneaker -->
+        <li>
+          <a (click)="toggleSubmenu('sneaker'); $event.preventDefault()" href="#">Sneaker</a>
+          <ul class="submenu" [class.active]="menuState['sneaker']">
+            <!-- Felfedezés -->
+            <li>
+              <a (click)="toggleSubmenu('discover'); $event.preventDefault()" href="#">Felfedezés</a>
+              <ul class="submenu" [class.active]="menuState['discover']">
+                <li><a (click)="scrollToBest(); toggleMenu()">Best Sellers</a></li>
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{ maxPrice: 50000 }">50 000 Ft alatt</a></li>
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{ maxPrice: 100000 }">100 000 Ft alatt</a></li>
+              </ul>
+            </li>
+            
+            <!-- Air Jordan -->
+            <li>
+              <a (click)="toggleSubmenu('air-jordan'); $event.preventDefault()" href="#">Air Jordan</a>
+              <ul class="submenu" [class.active]="menuState['air-jordan']">
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{model: 'Air Jordan 1'}">Air Jordan 1</a></li>
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{model: 'Air Jordan 3'}">Air Jordan 3</a></li>
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{model: 'Air Jordan 4'}">Air Jordan 4</a></li>
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{brand: 'Jordan'}">Még több Air Jordan</a></li>
+              </ul>
+            </li>
+    
+            <!-- További almenük... -->
+            <li>
+              <a (click)="toggleSubmenu('nike'); $event.preventDefault()" href="#">Nike</a>
+              <ul class="submenu" [class.active]="menuState['nike']">
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{model: 'Air Force 1'}">Air Force 1</a></li>
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{model: 'Dunk'}">Dunk</a></li>
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{model: 'Air Max'}">Air Max</a></li>
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{brand: 'Nike'}">Még több Nike</a></li>
+              </ul>
+            </li>
+  
+            <li>
+              <a (click)="toggleSubmenu('new-balance'); $event.preventDefault()" href="#">New Balance</a>
+              <ul class="submenu" [class.active]="menuState['new-balance']">
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{model: 'New Balance 550'}">New Balance 550</a></li>
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{model: 'New Balance 370'}">New Balance 370</a></li>
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{model: 'New Balance 1906'}">New Balance 1906</a></li>
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{brand: 'New Balance'}">Még több New Balance</a></li>
+              </ul>
+            </li>
+  
+            <li>
+              <a (click)="toggleSubmenu('yeezy'); $event.preventDefault()" href="#">Yeezy</a>
+              <ul class="submenu" [class.active]="menuState['yeezy']">
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{model: 'Yeezy 350'}">Yeezy 350</a></li>
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{model: 'Slide'}">Slide</a></li>
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{model: 'Foam Runner'}">Foam Runner</a></li>
+                <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{brand: 'Yeezy'}">Még több Yeezy</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+    
+        <!-- Kiegészítők -->
+        <li>
+          <a (click)="toggleSubmenu('accessories'); $event.preventDefault()" href="#">Kiegészítők</a>
+          <ul class="submenu" [class.active]="menuState['accessories']">
+            <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{category: 'Shield'}">Sneaker Shield</a></li>
+            <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{category: 'Lace'}">Fűzők</a></li>
+            <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{category: 'Care'}">Cipőápolási termékek</a></li>
+            <li><a (click)="toggleMenu()" [routerLink]="['/products']" [queryParams]="{category: 'Gift'}">Ajándékutalvány</a></li>
+          </ul>
+        </li>
+    
+        <!-- Info -->
+        <li>
+          <a (click)="toggleSubmenu('info'); $event.preventDefault()" href="#">Info</a>
+          <ul class="submenu" [class.active]="menuState['info']">
+            <li><a (click)="toggleMenu()" [routerLink]="['/about']">Rólunk</a></li>
+            <li><a (click)="toggleMenu()" [routerLink]="['/GYIK']">GYIK</a></li>
+            <li><a (click)="toggleMenu()" [routerLink]="['/contact']">Kapcsolat</a></li>
+          </ul>
+        </li>
+      </ul>
+  </nav>
+  
+  <div class="backdrop" [class.active]="isMenuOpen" (click)="toggleMenu()"></div>
+  
+  <header class="hero-section">
+      <div class="hero-image">
+          <img src="https://www.overkillshop.com/cdn/shop/files/air-force-1.webp?v=1712828747&width=1920" alt="Nike cipő">
+      </div>
+      <div class="features">
+          <div class="feature"><i class="fas fa-shipping-fast"></i> Gyors kiszállítás</div>
+          <div class="feature"><i class="fas fa-undo"></i> Ingyenes visszaküldés 30 napig</div>
+          <div class="feature"><i class="fas fa-percent"></i> Kedvezmények egész évben</div>
+      </div>
+  </header>
+
+<!-- webshop.component.html -->
+<section class="products-section" id="new">
+  <h2>Újdonságok</h2>
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let shoe of newShoes" (click)="openProductModal(shoe)">
+      <div class="image-container">
+        <!-- Update img to image -->
+        <img [src]="shoe.image" [alt]="shoe.name">
+      </div>
+      <div class="text-container">
+        <!-- Update nev to name -->
+        <p>{{ shoe.name }}</p>
+        <p>{{ shoe.price | number }} Ft</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products-section" id="best" #best>
+  <h2>Best Sellerek</h2>
+  <div class="product-grid">
+    <div class="product-card" *ngFor="let shoe of bestSellerShoes" (click)="openProductModal(shoe)">
+      <div class="image-container">
+        <!-- Update img to image -->
+        <img [src]="shoe.image" [alt]="shoe.name">
+      </div>
+      <div class="text-container">
+        <!-- Update nev to name -->
+        <p>{{ shoe.name }}</p>
+        <p>{{ shoe.price | number }} Ft</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="product-modal" [class.active]="selectedProduct">
+  <div class="modal-content" *ngIf="selectedProduct">
+    <span class="close" (click)="closeProductModal()">&times;</span>
+    <div class="modal-image">
+      <img [src]="selectedProduct.image" [alt]="selectedProduct.name">
+    </div>
+    <div class="modal-details">
+      <h3>{{ selectedProduct.name }}</h3>
+      <p class="price">{{ selectedProduct.price | number }} Ft</p>
+
+      <div class="size-selector">
+        <h4>Válassz méretet:</h4>
+        <div class="size-options">
+          <button 
+            *ngFor="let size of selectedProduct.sizes" 
+            [class.selected]="selectedSize === size"
+            (click)="selectSize(size)"
+          >
+            {{ size }}
+          </button>
+        </div>
+      </div>
+
+      <button 
+        class="add-to-cart" 
+        (click)="addToCart()" 
+        [disabled]="!selectedSize"
+      >
+        <i class="fas fa-cart-plus"></i> Kosárba
+      </button>
+
+      <p class="description" *ngIf="selectedProduct.description">
+        {{ selectedProduct.description }}
+      </p>
+    </div>
+  </div>
+</div>
+
+
+  
+  <footer class="footer" id="footer">
+      <div class="footer-content">
+          <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+          <div class="info">
+              <p>SneakR Bemutató: Budapest, Váci utca 12.</p>
+              <p>Nyitva tartás: 7:00-18:00 (Hétfő-Péntek)</p>
+          </div>
+          <div class="newsletter">
+              <h3>Hírlevél</h3>
+              <input type="email" placeholder="E-mail cím">
+              <button>Feliratkozás</button>
+          </div>
+      </div>
+  </footer>
+
+<div class="loading-overlay" *ngIf="loading">
+    <div class="loading-spinner"></div>
+</div>

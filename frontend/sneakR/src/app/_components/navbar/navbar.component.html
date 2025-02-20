@@ -1,0 +1,86 @@
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<header>
+    <nav class="navbar-container">
+        <div class="logo">
+            <img src="assets/resellicon.png" alt="Resell Sneaker Logo" 
+                 (click)="navigateToTarget3()" 
+                 class="logo-img">
+        </div>
+
+        <div class="nav-icons">
+            <div class="search-container">
+                <input type="text" placeholder="Mit keresel?" class="search-input">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            
+            <a [routerLink]="['/resell-user']" class="icon-btn">
+                <i class="fas fa-user"></i>
+            </a>
+            
+            <div class="cart-wrapper">
+                <div class="icon-btn cart-btn" (click)="toggleCartMenu()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span *ngIf="cartCount > 0" class="icon-count">{{ cartCount }}</span>
+                </div>
+            
+                <div class="cart-menu" [class.active]="showCartMenu">
+                    <div class="cart-menu-header">
+                        <h4>Kosár tartalma</h4>
+                    </div>
+            
+                    <div class="cart-items-list" *ngIf="cartItems.length > 0; else emptyCart">
+                        <div class="cart-menu-item" *ngFor="let item of cartItems">
+                            <div class="item-actions">
+                                <button class="item-remove-btn" (click)="cartService.removeFromCart(item.id)">×</button>
+                            </div>
+                            <img [src]="item.imgUrl" [alt]="item.name">
+                            <div class="item-info">
+                                <p>{{ item.name }}</p>
+                                <small>{{ item.price | currency:'HUF' }}</small>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <ng-template #emptyCart>
+                        <div class="empty-cart">
+                            <i class="fas fa-shopping-basket"></i>
+                            <p>A kosár üres</p>
+                        </div>
+                    </ng-template>
+            
+                    <div class="cart-menu-footer">
+                        <button class="view-cart-btn" (click)="navigateToCart()">Kosár megtekintése</button>
+                    </div>
+                </div>
+            </div>
+            <button class="icon-btn hamburger-btn" (click)="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <ul class="mobile-nav" [class.active]="isMenuActive">
+            <li><button (click)="filterByCategory('Férfi')">Férfi</button></li>
+            <li><button (click)="filterByCategory('Női')">Női</button></li>
+            
+            <li>
+                <button (click)="toggleQualityMenu()">Minőség</button>
+                <ul class="submenu" [class.active]="qualityMenuActive">
+                    <li><button (click)="filterByQuality('Új')">Új</button></li>
+                    <!-- <li><button (click)="filterByQuality('Újszerű')">Újszerű</button></li> -->
+                    <li><button (click)="filterByQuality('Használt')">Használt</button></li>
+                </ul>
+            </li>
+            
+            <li>
+                <button (click)="toggleBrandMenu()">Márkák</button>
+                <ul class="submenu" [class.active]="brandMenuActive">
+                    <li *ngFor="let brand of brands">
+                        <button (click)="filterByBrand(brand)">{{ brand }}</button>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>

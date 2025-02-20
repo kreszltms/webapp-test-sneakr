@@ -1,0 +1,43 @@
+<div class="admin-container">
+  <div *ngIf="isAdmin; else accessDenied">
+    <h1>Felhasználók Kezelése</h1>
+
+    <div *ngIf="users.length > 0">
+        Betöltött felhasználók száma: {{ users.length }}<br>
+        Első felhasználó neve: {{ users[0].nev }}
+      </div>
+    
+      <table class="users-table" *ngIf="users.length > 0">
+        <thead>
+          <tr>
+            <th>Név</th>
+            <th>Email</th>
+            <th>Műveletek</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.nev }}</td> <!-- Ha a backend "name"-ként küldi, írd át erre: user.name -->
+            <td>{{ user.email }}</td>
+            <td>
+              <button class="delete-btn" (click)="deleteUser(user.id)">
+                Törlés
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  
+<div class="loading" *ngIf="users.length === 0">
+      Felhasználók betöltése...
+    </div>
+  </div>
+
+    <ng-template #accessDenied>
+      <div class="error-container">
+        <h2>404 - Nem található</h2>
+        <p>Nincs jogosultságod az oldal megtekintéséhez!</p>
+        <button class="back-button" (click)="goBack()">Vissza a főoldalra</button>
+      </div>
+    </ng-template>
+</div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Sneakr Resell</title>
+    <link rel="stylesheet" href="css/home_updated.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                <img src="resources/resellicon.png" alt="Resell Sneaker Logo"></a>
+            </div>
+            <div class="search-cart">
+                <input type="text" placeholder="Mit keresel?">
+                <i class="fas fa-search"></i>
+                <a href="resell_user.html"><i style="color: #fff;" class="fas fa-user user-icon"></i></a>
+                <a href="resell_cart.html"><i style="color: #fff;" class="fas fa-shopping-cart"></i></a>
+                <i class="fas fa-bars menu-toggle"></i>
+            </div>
+        </nav>
+        <ul class="hamburger-menu">
+            <li><a href="#">Férfi</a></li>
+            <li><a href="#">Női</a></li>
+            <li><a href="#">Minőség</a></li>
+            <li><a href="about.html">Info</a></li>
+        </ul>
+    </header>
+    <main class="home-section">
+        <div class="content">
+            <h1>Készen állsz sneakereid szortírozására?</h1>
+            <a href="sell_updated.html">
+            <button class="cta-button">Eladás most</button></a>
+        </div>
+    </main>
+    <script>
+        // Hamburger menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        menuToggle.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

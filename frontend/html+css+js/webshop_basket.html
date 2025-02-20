@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SneakR Kosár</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/webshop_basket.css">
+</head>
+<body>
+    <!-- Navigációs sáv -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="webshop_home_page.html"><img src="resources/webshopicon.png" alt="SneakR Logo"></a>
+        </div>
+        <div class="nav-right">
+            <input type="text" placeholder="Mit keresel?" class="search-bar">
+            <a href="user.html"><i style="color: #fff;" class="fas fa-user"></i></a>
+            <a href="webshop_basket.html"><i style="color: #fff;" class="fas fa-shopping-cart"></i></a>
+            <i class="fas fa-bars" id="hamburger-icon" style="cursor: pointer;"></i>
+        </div>
+    </header>
+
+    <!-- Hamburger menü -->
+    <div id="hamburger-menu" class="hamburger-menu">
+        <ul>
+            <li><a href="webshop_home_page.html">Főoldal</a></li>
+            <li><a href="about.html">Rólunk</a></li>
+            <li><a href="contact.html">Kapcsolat</a></li>
+        </ul>
+    </div>
+
+    <!-- Kosár folyamat -->
+    <main class="cart-container">
+        <!-- Lépés: Kosár -->
+        <section id="cart-step" class="step active">
+            <h2>Kosár</h2>
+            <div class="cart-items" id="cart-items">
+                <div class="cart-item">
+                    <img src="https://cipopakk.hu/UserFiles/Product/thumb/tn-jordan1do5047-1666781996.jpg" alt="Air Jordan 1" class="item-image">
+                    <div class="item-details">
+                        <h3>Air Jordan 1</h3>
+                        <p>Ár: 59,990 Ft</p>
+                        <p>Méret: 42</p>
+                        <button class="remove-btn" onclick="removeItem(this)">Eltávolítás</button>
+                    </div>
+                </div>
+                <div class="cart-item">
+                    <img src="https://cipopakk.hu/UserFiles/Product/thumb/tn-jordan1do5047-1666781996.jpg" alt="Air Jordan 4" class="item-image">
+                    <div class="item-details">
+                        <h3>Air Jordan 4</h3>
+                        <p>Ár: 69,990 Ft</p>
+                        <p>Méret: 44</p>
+                        <button class="remove-btn" onclick="removeItem(this)">Eltávolítás</button>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-summary">
+                <p>Részösszeg: <span class="price" id="subtotal">129,980 Ft</span></p>
+                <button class="next-step-btn" onclick="goToStep(2)">Tovább a szállításhoz</button>
+            </div>
+        </section>
+
+        <!-- Lépés: Szállítás -->
+        <section id="shipping-step" class="step">
+            <h2>Szállítási Adatok</h2>
+            <form id="shipping-form">
+                <label for="name">Teljes név:</label>
+                <input type="text" id="name" required>
+                <label for="email">Email cím:</label>
+                <input type="email" id="email" required>
+                <label for="address">Cím:</label>
+                <input type="text" id="address" required>
+                <label for="city">Város:</label>
+                <input type="text" id="city" required>
+                <label for="postal-code">Irányítószám:</label>
+                <input type="text" id="postal-code" required>
+                <button type="button" class="next-step-btn" onclick="goToStep(3)">Tovább a fizetéshez</button>
+            </form>
+        </section>
+
+        <!-- Lépés: Fizetés -->
+        <section id="payment-step" class="step">
+            <h2>Fizetés</h2>
+            <form id="payment-form">
+                <label for="card-name">Kártyatulajdonos neve:</label>
+                <input type="text" id="card-name" required>
+                <label for="card-number">Kártyaszám:</label>
+                <input type="text" id="card-number" required>
+                <label for="expiry-date">Lejárati dátum:</label>
+                <input type="text" id="expiry-date" required>
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" required>
+                <button type="submit" class="next-step-btn" onclick="completePurchase(event)">Megrendelés véglegesítése</button>
+            </form>
+        </section>
+
+        <!-- Lépés: Sikeres vásárlás -->
+        <section id="success-step" class="step">
+            <h2>Sikeres Vásárlás!</h2>
+            <p>Köszönjük, hogy nálunk vásároltál!</p>
+            <button class="next-step-btn" onclick="redirectToHome()">Vissza a főoldalra</button>
+        </section>
+    </main>
+
+    <script src="js/webshop_basket.js"></script>
+</body>
+</html>

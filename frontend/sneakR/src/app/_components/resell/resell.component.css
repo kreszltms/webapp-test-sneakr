@@ -1,0 +1,81 @@
+/* Home szekció */
+.home-section {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1705096953495-8ea06879b986?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG5pa2UlMjBhaXIlMjBqb3JkYW4lMjAxfGVufDB8fDB8fHww') no-repeat center center/cover;
+    height: 100vh; /* Teljes képernyő */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* Átlátszó overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* Sötét átlátszó réteg */
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Tartalom */
+.content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.home-section h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.cta-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    background: #2A7B47;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+.cta-button:hover {
+    background: #1F5C37;
+    transform: translateY(-3px); /* Enyhe emelkedés */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Árnyék */
+}
+
+/* Reszponzív design */
+@media (max-width: 768px) {
+    .home-section h1 {
+        font-size: 1.5rem;
+    }
+    .cta-button {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+/* Fade-in animáció */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+

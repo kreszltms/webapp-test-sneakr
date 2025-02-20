@@ -1,0 +1,657 @@
+/* shoe-controller.component.css */
+.shoe-controller-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #2A7B47;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.shoes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.shoes-table th,
+.shoes-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.shoes-table th {
+    background-color: #3d7852;
+    color: white;
+}
+
+.shoe-image {
+    width: 80px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.delete-btn:hover {
+    background: #bb2d3b;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+.error-container {
+    text-align: center;
+    padding: 4rem;
+    background: #f8d7da;
+    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+.error-container h2 {
+    color: #721c24;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.error-container p {
+    color: #721c24;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.back-button {
+    background: #2A7B47;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.back-button:hover {
+    background: #1f5e36;
+}
+
+.success-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.success-modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+.modal-icon {
+    color: #2A7B47;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.modal-title {
+    color: #2A7B47;
+    margin-bottom: 1.5rem;
+}
+
+.modal-close-button {
+    background: #2A7B47;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.modal-close-button:hover {
+    background: #1f5e36;
+}
+
+.custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.custom-modal.active {
+    display: flex;
+}
+
+.fa-exclamation-circle {
+    color: #dc3545;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.modal-cancel-button {
+    background: #6c757d;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.modal-confirm-button {
+    background: #dc3545;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.modal-cancel-button:hover {
+    background: #5a6268;
+}
+
+.modal-confirm-button:hover {
+    background: #bb2d3b;
+}
+
+/* Success Modal Specific */
+.fa-check-circle {
+    color: #2A7B47;
+}
+
+.modal-close-button {
+    background: #2A7B47;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 1.5rem;
+}
+
+.modal-close-button:hover {
+    background: #1f5e36;
+}
+
+.shoe-name{
+    color: #000000;
+    font-weight: bold;
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    word-break: break-word;
+}
+
+.deleted-shoe-name{
+    color: #801111;
+        font-weight: bold;
+        margin: 1rem 0;
+        font-size: 1.1rem;
+        word-break: break-word;
+}
+
+/* Modify existing modal styles */
+.modal-content {
+    /* existing styles */
+    padding: 2rem 1.5rem;
+}
+
+.modal-title {
+    margin-bottom: 0.5rem;
+}
+
+.upload-button {
+    background: linear-gradient(135deg, #2A7B47, #3BAE6D);
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.upload-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(42, 123, 71, 0.4);
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-left: 0px;
+}
+
+.sell-form {
+    background: rgba(40, 40, 40, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.upload-form .input-group {
+    margin-bottom: 1rem;
+}
+
+.upload-form input,
+.upload-form select {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    color: #333;
+}
+
+.upload-form label {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    padding: 0 5px;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.upload-form input:focus+label,
+.upload-form select:focus+label,
+.upload-form input:not(:placeholder-shown)+label,
+.upload-form select:valid+label {
+    transform: translateY(-2rem);
+    font-size: 0.9rem;
+    color: #2A7B47;
+}
+
+.custom-modal .upload-form {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    width: 500px;
+    max-width: 95%;
+}
+
+.custom-modal .upload-form .input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.custom-modal .upload-form input,
+.custom-modal .upload-form select {
+    width: 100%;
+    padding: 12px;
+    padding-right: 6px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.custom-modal .upload-form input:focus,
+.custom-modal .upload-form select:focus {
+    border-color: #2A7B47;
+    outline: none;
+    box-shadow: 0 0 8px rgba(42, 123, 71, 0.2);
+}
+
+.custom-modal .upload-form label {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    padding: 0 5px;
+    color: #666;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.custom-modal .upload-form input:focus+label,
+.custom-modal .upload-form select:valid+label,
+.custom-modal .upload-form input:not(:placeholder-shown)+label {
+    transform: translateY(-32px);
+    font-size: 0.9rem;
+    color: #2A7B47;
+    background: white;
+}
+
+.custom-modal .upload-form .modal-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: flex-end;
+}
+
+/* Select dropdown styling */
+.custom-modal .upload-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232A7B47' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    width: 100%;
+    padding-right: 35px;
+}
+
+/* Error message styling */
+.upload-error {
+    color: #dc3545;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+input:invalid:not(:placeholder-shown)+label+.upload-error {
+    display: block;
+}
+
+.edit-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-left: 8px;
+}
+
+.edit-btn:hover {
+    background: #0056b3;
+}
+
+.modal-confirm-button.edit {
+    background: #007bff;
+}
+
+.modal-confirm-button.edit:hover {
+    background: #0056b3;
+}
+
+/* Adjust table cell padding */
+.shoes-table td {
+    padding: 8px;
+}
+
+.custom-modal .modal-content {
+    background: white !important;
+    padding: 2rem !important;
+}
+
+.custom-modal .input-group select {
+    background-color: white !important;
+    color: #333 !important;
+}
+
+.custom-modal .input-group label {
+    background: white !important;
+}
+
+/* Ensure modal visibility */
+.custom-modal.active,
+.success-modal.active {
+    display: flex !important;
+    z-index: 2000;
+}
+
+/* Fix option styling */
+.custom-modal select option {
+    background: white !important;
+    color: #333 !important;
+}
+
+/* shoe-controller.component.css */
+.shoe-controller-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #2A7B47;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.shoes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.shoes-table th,
+.shoes-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.shoes-table th {
+    background-color: #3d7852;
+    color: white;
+}
+
+.shoe-image {
+    width: 80px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.delete-btn, .edit-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-left: 8px;
+}
+
+.delete-btn:hover {
+    background: #bb2d3b;
+}
+
+.edit-btn {
+    background: #007bff;
+}
+
+.edit-btn:hover {
+    background: #0056b3;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+.error-container {
+    text-align: center;
+    padding: 4rem;
+    background: #f8d7da;
+    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 600px;
+}
+
+.error-container h2 {
+    color: #721c24;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.error-container p {
+    color: #721c24;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.back-button {
+    background: #2A7B47;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.back-button:hover {
+    background: #1f5e36;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .shoe-controller-container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .shoes-table th,
+    .shoes-table td {
+        padding: 8px;
+    }
+
+    .shoe-image {
+        width: 60px;
+        height: 40px;
+    }
+
+    .delete-btn, .edit-btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+
+    .back-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    .error-container {
+        padding: 2rem;
+    }
+
+    .error-container h2 {
+        font-size: 2rem;
+    }
+
+    .error-container p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .shoe-controller-container {
+        padding: 5px;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    .shoes-table th,
+    .shoes-table td {
+        padding: 6px;
+        font-size: 0.9rem;
+    }
+
+    .shoe-image {
+        width: 50px;
+        height: 30px;
+    }
+
+    .delete-btn, .edit-btn {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+
+    .back-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .error-container {
+        padding: 1rem;
+    }
+
+    .error-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .error-container p {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kosár - Sneakr Resell</title>
+    <link rel="stylesheet" href="css/resell_cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <!-- Flex container a logo és az ikonok számára -->
+            <div class="navbar-container">
+                <!-- Logo balra -->
+                <div class="logo">
+                    <a href="home_updated.html"><img src="resources/resellicon.png" alt="Sneakr Resell"></a>
+                </div>
+                <!-- Navbar ikonok jobbra -->
+                <div class="nav-icons">
+                    <a href="resell_user.html"><i style="color: #fff;" class="fas fa-user user-icon"></i></a>
+                    <i class="fas fa-bars hamburger-menu" onclick="toggleMenu()"></i>
+                </div>
+            </div>
+        </nav>
+    
+        <!-- Mobil menü -->
+        <ul id="mobile-menu" class="mobile-nav">
+            <li><a style="color: #fff;" href="#">Férfi</a></li>
+            <li><a style="color: #fff;" href="#">Női</a></li>
+            <li><a style="color: #fff;" href="#">Minőség</a></li>
+            <li><a style="color: #fff;" href="about.html">Info</a></li>
+        </ul>
+    </header>
+
+
+    <!-- <header>
+        <nav class="navbar">
+            
+            <div class="logo">
+                <img src="resources/resellicon.png" alt="Sneakr Resell">
+                <div class="nav-icons">
+                    <i class="fas fa-bars hamburger-menu" onclick="toggleMenu()"></i>
+                    <i class="fas fa-user user-icon"></i>
+                </div>
+            </div>
+    
+             
+            <div class="nav-icons">
+                <i class="fas fa-bars hamburger-menu" onclick="toggleMenu()"></i>
+                <i class="fas fa-user user-icon"></i>
+            </div>
+        </nav>
+    
+        
+        <ul id="mobile-menu" class="mobile-nav">
+            <li><a href="#">Férfi</a></li>
+            <li><a href="#">Női</a></li>
+            <li><a href="#">Minőség</a></li>
+            <li><a href="about.html">Info</a></li>
+        </ul>
+    </header> -->
+
+<main>
+    <h1>Kosarad</h1>
+
+    <div id="cart-items"></div>
+
+    <form id="checkoutForm" onsubmit="submitCheckout(event)">
+        <label for="name">Név</label>
+        <input type="text" id="name" placeholder="Név" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Email cím" required>
+
+        <label for="address">Szállítási cím</label>
+        <textarea id="address" placeholder="Szállítási cím" rows="3" required></textarea>
+
+        <label for="payment-method">Fizetési mód</label>
+        <select id="payment-method" onchange="showCardDetails()">
+            <option value="készpénz">Készpénz</option>
+            <option value="bankkártya">Bankkártya</option>
+        </select>
+
+        <div id="card-details" class="hidden">
+            <label for="card-number">Kártyaszám</label>
+            <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX" maxlength="16">
+
+            <label for="expiry-date">Lejárati dátum</label>
+            <input type="month" id="expiry-date">
+
+            <label for="cvv">CVV</label>
+            <input type="text" id="cvv" placeholder="CVV" maxlength="3">
+        </div>
+
+        <button type="submit" class="btn">Fizetés</button>
+    </form>
+</main>
+
+<script>
+    const cart = [
+        { name: 'Nike Air Jordan', img: 'https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/a73e4b7f-9c0a-47b2-a6ef-ceb4ca6b54c3/AIR+JORDAN+1+MID+%28GS%29.png' },
+        { name: 'Adidas Superstar', img: 'https://www.buzzsneakers.hu/files/images/slike_proizvoda/media/ID4/ID4655/images/ID4655.jpg' }
+    ];
+
+    function renderCart() {
+        const cartItems = document.getElementById('cart-items');
+
+        cart.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'cart-item';
+            div.innerHTML = `<img src="${item.img}" alt="${item.name}" class="product-img">
+                              <span>${item.name}</span>`;
+            cartItems.appendChild(div);
+        });
+    }
+
+    function showCardDetails() {
+        const paymentMethod = document.getElementById('payment-method').value;
+        const cardDetails = document.getElementById('card-details');
+
+        if (paymentMethod === 'bankkártya') {
+            cardDetails.classList.remove('hidden');
+        } else {
+            cardDetails.classList.add('hidden');
+        }
+    }
+
+    function toggleMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('active');
+    }
+
+    function submitCheckout(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const address = document.getElementById('address').value;
+
+        alert(`Kosarad elküldve!\nNév: ${name}\nEmail: ${email}\nCím: ${address}`);
+    }
+
+    renderCart();
+</script>
+
+</body>
+</html>
+
+
+
+<!-- https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/a73e4b7f-9c0a-47b2-a6ef-ceb4ca6b54c3/AIR+JORDAN+1+MID+%28GS%29.png -->
+<!-- https://www.buzzsneakers.hu/files/images/slike_proizvoda/media/ID4/ID4655/images/ID4655.jpg -->

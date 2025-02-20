@@ -1,0 +1,119 @@
+/* Alap stílusok */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Navigációs sáv */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    color: white;
+    padding: 10px 20px;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo img {
+    margin-right: 10px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav-right .search-bar {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Hamburger menü */
+#hamburger-menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 250px;
+    background: #333;
+    color: white;
+    display: none;
+    z-index: 1000;
+}
+
+#hamburger-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#hamburger-menu li {
+    padding: 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #444;
+}
+
+#hamburger-menu li a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Lenytitható almenük */
+.submenu {
+    display: none;
+    list-style: none;
+    padding-left: 20px;
+    background-color: #444;
+}
+
+.submenu li {
+    padding: 10px;
+}
+
+/* Fő tartalom */
+.main-content {
+    display: flex;
+    margin-top: 70px;
+}
+
+.filter {
+    width: 250px;
+    background: #f4f4f4;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+}
+
+.products {
+    flex: 1;
+    padding: 20px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+}
+
+.product-card img {
+    max-width: 100%;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}

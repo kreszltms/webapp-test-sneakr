@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SneakR</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+    <!-- Navigációs sáv -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html">
+            <img src="resources/webshopicon.png" style="width: 60px; height: 60px; border-radius: 50%;" alt="SneakR Logo"></a>
+        </div>
+        <div class="nav-right">
+            <input type="text" placeholder="Mit keresel?" class="search-bar">
+            <a href="user.html"><i style="color: #fff;" class="fas fa-user"></i></a>
+            <a href="webshop_basket.html"><i style="color: #fff;" class="fas fa-shopping-cart"></i></a>
+            <i class="fas fa-bars" id="hamburger-icon" style="cursor: pointer;"></i>
+        </div>
+    </header>
+
+    <!-- Hamburger menü -->
+    <nav id="hamburger-menu" class="hidden">
+        <ul>
+            <li><a href="#">Márkák</a>
+                <ul class="submenu">
+                    <li><a href="#">Jordan</a></li>
+                    <li><a href="#">Nike</a></li>
+                    <li><a href="#">Adidas</a></li>
+                    <li><a href="#">Yeezy</a></li>
+                    <li><a href="#">New Balance</a></li>
+                    <li><a href="#">Alexander McQueen</a></li>
+                    <li><a href="#">Travis Scott</a></li>
+                    <li><a href="#">Reebok</a></li>
+                    <li><a href="#">Converse</a></li>
+                    <li><a href="#">Puma</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Sneaker</a>
+                <ul class="submenu">
+                    <li><strong><a href="#" id="felfedezes-link">Felfedezés</a></strong>
+                        <ul class="submenu" id="felfedezes-submenu" style="display: none;">
+                            <li><a href="#">Best Sellers</a></li>
+                            <li><a href="#">50 000 Ft alatt</a></li>
+                            <li><a href="#">100 000 Ft alatt</a></li>
+                        </ul>
+                    </li>
+                    <li><strong><a href="#" id="air-jordan-link">Air Jordan</a></strong>
+                        <ul class="submenu" id="air-jordan-submenu" style="display: none;">
+                            <li><a href="#">Air Jordan 1</a></li>
+                            <li><a href="#">Air Jordan 3</a></li>
+                            <li><a href="#">Air Jordan 4</a></li>
+                            <li><a href="#">Még több Air Jordan</a></li>
+                        </ul>
+                    </li>
+                    <li><strong><a href="#" id="nike-link">Nike</a></strong>
+                        <ul class="submenu" id="nike-submenu" style="display: none;">
+                            <li><a href="#">Air Force 1</a></li>
+                            <li><a href="#">Dunk</a></li>
+                            <li><a href="#">Air Max</a></li>
+                            <li><a href="#">Még több Nike</a></li>
+                        </ul>
+                    </li>
+                    <li><strong><a href="#" id="new-balance-link">New Balance</a></strong>
+                        <ul class="submenu" id="new-balance-submenu" style="display: none;">
+                            <li><a href="#">New Balance 550</a></li>
+                            <li><a href="#">New Balance 1906</a></li>
+                            <li><a href="#">Még több New Balance</a></li>
+                        </ul>
+                    </li>
+                    <li><strong><a href="#" id="yeezy-link">Yeezy</a></strong>
+                        <ul class="submenu" id="yeezy-submenu" style="display: none;">
+                            <li><a href="#">Slide</a></li>
+                            <li><a href="#">Foam Runner</a></li>
+                            <li><a href="#">Yeezy 350</a></li>
+                            <li><a href="#">Még több Yeezy</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><a href="#">Kiegészítők</a>
+                <ul class="submenu">
+                    <li><a href="#">Sneaker Shield</a></li>
+                    <li><a href="#">Fűzők</a></li>
+                    <li><a href="#">Cipőápolási termékek</a></li>
+                    <li><a href="#">Ajándékutalvány</a></li>
+                </ul>
+            </li>
+            <li><a href="about.html">Info</a>
+                <ul class="submenu">
+                    <li><a href="about.html">Rólunk</a></li>
+                    <li><a href="GYIK.html">GYIK</a></li>
+                    <li><a href="contact.html">Kapcsolat</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Tartalom -->
+    <main class="main-content">
+        <!-- Szűrő -->
+        <aside class="filter">
+            <h3>Szűrő</h3>
+            <form>
+                <label for="gender">Nem:</label>
+                <select id="gender">
+                    <option value="ferfi">Férfi</option>
+                    <option value="noi">Női</option>
+                </select>
+                <label for="size">Méret:</label>
+                <select id="size">
+                    <option value="36">36</option>
+                    <option value="38">38</option>
+                    <option value="40">40</option>
+                    <option value="42">42</option>
+                    <option value="44">44</option>
+                    <option value="46">46</option>
+                </select>
+                <label for="price">Ár:</label>
+                <input type="range" id="price" min="0" max="50000" value="25000" oninput="updatePrice(this.value)">
+                <p>Ár: <span id="price-value">25,000 Ft</span></p>
+            </form>
+        </aside>
+
+        <!-- Termékek megjelenítése -->
+        <section class="products">
+            <h2>Férfi Jordan cipők (15)</h2>
+            <div class="product-grid" id="product-grid">
+                <!-- Termékek generálása -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Hamburger menü működés
+        document.getElementById("hamburger-icon").addEventListener("click", () => {
+            const menu = document.getElementById("hamburger-menu");
+            menu.style.display = menu.style.display === "block" ? "none" : "block";
+        });
+
+        // Lenytitható almenük
+        document.querySelectorAll('#hamburger-menu > ul > li > a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const submenu = this.nextElementSibling;
+                if (submenu) {
+                    submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+                }
+            });
+        });
+
+        // Felfedezés kattintás esetén a termékek megjelenítése
+        document.getElementById("felfedezes-link").addEventListener("click", function() {
+            const felfedezesSubmenu = document.getElementById("felfedezes-submenu");
+            felfedezesSubmenu.style.display = felfedezesSubmenu.style.display === "block" ? "none" : "block";
+        });
+
+        // Air Jordan kattintás esetén a modellek megjelenítése
+        document.getElementById("air-jordan-link").addEventListener("click", function() {
+            const airJordanSubmenu = document.getElementById("air-jordan-submenu");
+            airJordanSubmenu.style.display = airJordanSubmenu.style.display === "block" ? "none" : "block";
+        });
+
+        // Nike kattintás esetén a modellek megjelenítése
+        document.getElementById("nike-link").addEventListener("click", function() {
+            const nikeSubmenu = document.getElementById("nike-submenu");
+            nikeSubmenu.style.display = nikeSubmenu.style.display === "block" ? "none" : "block";
+        });
+
+        // New Balance kattintás esetén a modellek megjelenítése
+        document.getElementById("new-balance-link").addEventListener("click", function() {
+            const newBalanceSubmenu = document.getElementById("new-balance-submenu");
+            newBalanceSubmenu.style.display = newBalanceSubmenu.style.display === "block" ? "none" : "block";
+        });
+
+        // Yeezy kattintás esetén a modellek megjelenítése
+        document.getElementById("yeezy-link").addEventListener("click", function() {
+            const yeezySubmenu = document.getElementById("yeezy-submenu");
+            yeezySubmenu.style.display = yeezySubmenu.style.display === "block" ? "none" : "block";
+        });
+
+        // Ár csúszka frissítése
+        function updatePrice(value) {
+            document.getElementById("price-value").textContent = `${parseInt(value).toLocaleString()} Ft`;
+        }
+
+        // Termékek dinamikus generálása
+        const products = Array.from({length: 15}, (_, i) => ({
+            name: `Air Jordan ${i + 1}`,
+            price: `${Math.floor(Math.random() * 20000) + 50000} Ft`,
+            image: "https://cipopakk.hu/UserFiles/Product/thumb/tn-jordan1do5047-1666781996.jpg"
+        }));
+
+        const productGrid = document.getElementById("product-grid");
+
+        products.forEach(product => {
+            const productCard = document.createElement("div");
+            productCard.classList.add("product-card");
+            productCard.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+                <h4>${product.name}</h4>
+                <p>${product.price}</p>
+            `;
+            productGrid.appendChild(productCard);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bejelentkezés</title>
+</head>
+
+<body>
+    <!-- login.component.html -->
+    <div class="container">
+        <h1>SNEAKR</h1>
+        <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+            <div class="input-group">
+                <input type="email" placeholder="Email" id="email" [(ngModel)]="email" name="email" required
+                    [class.invalid]="errorMessage">
+                <div class="error-message" *ngIf="errorMessage">
+                    {{ errorMessage }}
+                </div>
+            </div>
+    
+            <div class="input-group">
+                <input type="password" placeholder="Jelszó" id="password" [(ngModel)]="password" name="password" required
+                    [class.invalid]="errorMessage">
+            </div>
+    
+            <a [routerLink]="['/password']" class="help-link">Elfelejtetted a jelszavad?</a>
+    
+            <button type="submit" [disabled]="isLoading">
+                <span *ngIf="!isLoading">Bejelentkezés</span>
+                <span *ngIf="isLoading">Betöltés...</span>
+            </button>
+        </form>
+    
+        <div class="register-section">
+            <p>Nincs még fiókod?</p>
+            <a class="register-button" [routerLink]="['/register']">Regisztráció</a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<header>
+    <nav class="navbar-container">
+      <div class="logo">
+        <img src="assets/resellicon.png" alt="Resell Sneaker Logo" 
+             (click)="navigateToTarget3()" 
+             class="logo-img">
+      </div>
+      
+      <div class="nav-links">
+        <a [routerLink]="['/resell']" class="nav-link">←</a>
+        <a [routerLink]="['/about']" 
+           class="nav-link" 
+           routerLinkActive="active" 
+           [routerLinkActiveOptions]="{ exact: true }">Rólunk</a>
+           
+        <a [routerLink]="['/GYIK']" 
+           class="nav-link" 
+           routerLinkActive="active">GYIK</a>
+           
+        <a [routerLink]="['/contact']" 
+           class="nav-link" 
+           routerLinkActive="active">Kapcsolat</a>
+    </div>
+    </nav>    
+  </header>
+
+<main class="content-section">
+  <section class="hero-section">
+      <h1>Kapcsolat</h1>
+      <p class="tagline">Kérdéseid vannak vagy egyedi igényed? Írj nekünk vagy hívj minket!</p>
+  </section>
+
+  <div class="contact-grid">
+      <div class="contact-card">
+          <div class="contact-info">
+              <h2><i class="fas fa-map-marker-alt"></i>Címünk</h2>
+              <p>1007 Budapest, Homok utca 12.</p>
+          </div>
+          
+          <div class="contact-info">
+              <h2><i class="fas fa-phone"></i>Telefon</h2>
+              <p>+36 30 777 8544</p>
+              <small>H-P: 8:00-18:00</small>
+          </div>
+          
+          <div class="contact-info">
+              <h2><i class="fas fa-envelope"></i>Email</h2>
+              <a href="mailto:info@sneakr.hu" class="accent-link">info&#64;sneakr.hu</a>
+          </div>
+      </div>
+
+      <div class="contact-card form-card">
+          <form class="contact-form">
+              <div class="input-group">
+                  <input type="text" id="name" required placeholder=" ">
+                  <label for="name">Teljes név</label>
+              </div>
+              
+              <div class="input-group">
+                  <input type="email" id="email" required placeholder=" ">
+                  <label for="email">Email cím</label>
+              </div>
+              
+              <div class="input-group">
+                  <textarea id="message" rows="5" required placeholder=" "></textarea>
+                  <label for="message">Üzeneted</label>
+              </div>
+
+              <button type="submit" class="gradient-btn">
+                  Üzenet küldése
+                  <i class="fas fa-paper-plane"></i>
+              </button>
+          </form>
+      </div>
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2024 SneakR. Minden jog fenntartva.<br>
+  <small>A sneaker közösség otthona</small></p>
+</footer>

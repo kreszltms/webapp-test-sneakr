@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felhasználói Fiók</title>
+    <link rel="stylesheet" href="css/user.css">
+</head>
+<body>
+    <!-- Navigációs sáv -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="webshop_home_page.html"><img src="resources/webshopicon.png" alt="SneakR Logo"></a>
+        </div>
+        <nav class="nav-links">
+            <a href="webshop_home_page.html">Márkák</a>
+            <a href="home_updated.html">Sneaker</a>
+            <a href="#">Kiegészítők</a>
+            <a href="about.html">Info</a>
+        </nav>
+        <div class="user-actions">
+            <button onclick="location.href='login.html'" class="logout-btn">Kijelentkezés</button>
+        </div>
+    </header>
+
+    <!-- Fő tartalom -->
+    <main class="profile-section">
+        <h1>Fiókod</h1>
+        <div class="content">
+            <!-- Korábbi rendeléseid -->
+            <div class="orders">
+                <h2>Korábbi rendeléseid</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rendelések</th>
+                            <th>Fizetés</th>
+                            <th>Teljesítés</th>
+                            <th>Összesen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#">#SNKR8074 - 14 okt., 2024</a></td>
+                            <td>Függőben</td>
+                            <td>Teljesítve</td>
+                            <td>30 980 FT</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Felhasználói információ -->
+            <div class="user-info">
+                <h2>John Doe</h2>
+                <p>johndoe@gmail.com</p>
+                <h3>Elsődleges cím</h3>
+                <p>
+                    John Doe<br>
+                    Homok utca 12<br>
+                    Hódmezővásárhely<br>
+                    Magyarország 1234<br>
+                    06201234567
+                </p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

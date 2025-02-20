@@ -1,0 +1,353 @@
+/* Általános beállítások */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0A0A0A;
+    color: #FFFFFF;
+    min-height: 100vh;
+}
+
+/* Navigációs sáv */
+/* NAVBAR */
+.navbar {
+    background-color: #000000;
+    padding: 1.2rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid #2A7B47;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-container {
+    width: 100%;
+    max-width: 1400px; /* Nem nyúlik túl szélesre */
+    display: flex;
+    justify-content: center;
+}
+
+/* NAVBAR UL (Menü) */
+.navbar ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    
+}
+
+/* NAVBAR LINKEK (Betűméret visszaállítása) */
+.navbar ul li a {
+    color: #E0FFEE;
+    text-decoration: none;
+    font-size: 1.3em; /* Nagyobb betűméret */
+    padding: 0.8rem 1.2rem;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.navbar ul li a:hover {
+    background-color: #2A7B47;
+    box-shadow: 0 4px 12px rgba(42, 123, 71, 0.3);
+}
+
+.navbar a.active {
+    background-color: #1E5A36;
+}
+
+/* HAMBURGER MENÜ (Alapból rejtett) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem; /* Nagyobb hamburger ikon */
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 1rem; /* Bal oldalra igazítva */
+    transform: translateY(-50%);
+}
+
+/* MOBILNÉZET - Hamburger menü és navigáció */
+@media (max-width: 768px) {
+    .navbar-container {
+        justify-content: flex-start; /* Balra igazítja a menüt */
+    }
+
+    .menu-toggle {
+        display: block; /* Megjeleníti a hamburger menüt */
+    }
+
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .navbar ul.open {
+        display: flex;
+    }
+
+    .navbar ul li {
+        text-align: center;
+        padding: 1rem 0;
+    }
+}
+    
+
+
+/* Profil szekció */
+.profile-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(45deg, #1A3D2B 0%, #0A0A0A 100%);
+    margin-bottom: 3rem;
+}
+
+.profile-info {
+    margin-top: 2rem;
+}
+
+.avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 3px solid #2A7B47;
+    box-shadow: 0 0 25px rgba(42, 123, 71, 0.4);
+}
+
+/* Listings szekció */
+.listings-section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.listings-section h2 {
+    color: #2A7B47;
+    border-bottom: 2px solid #2A7B47;
+    padding-bottom: 1rem;
+    margin-bottom: 2.5rem;
+    font-size: 1.8em;
+}
+
+/* Kártya elrendezés */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background-color: #151515;
+    border: 1px solid #2A7B47;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+}
+
+/* Képek konténere */
+.card-img-container {
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+    background: transparent; /* Fekete háttér eltávolítva */
+}
+
+/* Képek stílusa */
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Teljes kép látható */
+    padding: 0; /* Padding eltávolítva */
+    border-radius: 12px 12px 0 0; /* Csak a felső sarkok lekerekítve */
+}
+
+.card:hover img {
+    transform: scale(1.08);
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content h3 {
+    margin: 1rem 0;
+    font-size: 1.4em;
+    color: #E0FFEE;
+}
+
+.card-content p {
+    margin: 0.8rem 0;
+    color: #B0B0B0;
+    font-size: 0.95em;
+}
+
+.card-content button {
+    padding: 1rem 1.5rem;
+    background-color: #B00020;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+    margin-top: 1.2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.card-content button:hover {
+    background-color: #8A001A;
+    box-shadow: 0 4px 12px rgba(176, 0, 32, 0.3);
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease-out forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-20px); }
+}
+
+.profile-info p {
+    margin: 0.5rem 0;
+}
+
+.profile-info span.warning {
+    color: #ff9800;
+    font-style: italic;
+}
+
+
+#current-listings .card-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+#current-listings .card {
+    flex: 0 0 300px;
+    margin-right: 1.5rem;
+}
+
+/* Custom scrollbar */
+/* Slider Styles */
+.slider-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 60px;
+}
+
+.slider-wrapper {
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slide {
+    flex: 0 0 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.card {
+    background: #1a1a1a;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+.card-img-container {
+    height: 300px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.card-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #2A7B47;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.slider-arrow:hover:not(:disabled) {
+    background: #1F5C37;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .slide {
+        grid-template-columns: 1fr;
+    }
+
+    .slider-container {
+        padding: 0 40px;
+    }
+
+    .slider-arrow {
+        width: 40px;
+        height: 40px;
+    }
+}

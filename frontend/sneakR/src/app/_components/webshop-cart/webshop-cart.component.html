@@ -1,0 +1,85 @@
+<!-- webshop-cart.component.html -->
+<section class="cart-container">
+  <h2>Kosár tartalma</h2>
+  
+  <div class="cart-items">
+    <div *ngFor="let item of cartItems" class="cart-item">
+      <button class="remove-btn" (click)="removeItem(item.id)">×</button>
+      <div class="item-image">
+        <img [src]="item.image" [alt]="item.name">
+      </div>
+      <div class="item-details">
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.price | currency:'HUF':'symbol':'1.0-0' }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-summary">
+    <h3>Összesen: {{ cartService.getTotal() | currency:'HUF':'symbol':'1.0-0' }}</h3>
+  </div>
+
+  <form #checkoutForm="ngForm" (ngSubmit)="checkout()" class="checkout-form">
+    <div class="form-group">
+      <label for="name">Név:</label>
+      <input type="text" id="name" name="name" required ngModel placeholder="Nagy János">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required ngModel placeholder="teszt@gmail.com">
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Telefonszám:</label>
+      <input type="tel" id="phone" name="phone" required ngModel 
+             pattern="(\+36|06)[0-9]{8,9}" placeholder="0612345678">
+    </div>
+
+    <div class="form-group">
+      <label for="postalCode">Irányítószám:</label>
+      <input type="text" id="postalCode" name="postalCode" required ngModel 
+             maxlength="4" pattern="[0-9]{4}" placeholder="1234">
+    </div>
+    
+    <div class="form-group">
+      <label for="city">Város:</label>
+      <input type="text" id="city" name="city" required ngModel placeholder="Budapest">
+    </div>
+    
+    <div class="form-group">
+      <label for="street">Utca, házszám:</label>
+      <input type="text" id="street" name="street" required ngModel placeholder="Homok utca">
+    </div>
+    
+
+    <div class="form-group">
+      <label>Fizetési mód:</label>
+      <select #paymentSelect name="payment" required ngModel (change)="showCardDetails(paymentSelect.value)">
+        <option value="bankkártya">Bankkártya</option>
+        <option value="utánvét">Utánvét</option>
+      </select>
+    </div>
+
+    <div id="card-details" [class.hidden]="!showCard">
+      <div class="form-group">
+        <label for="card-number">Kártyaszám:</label>
+        <input type="text" id="card-number" name="cardNumber" ngModel placeholder="XXXX XXXX XXXX XXXX" maxlength="16">
+      </div>
+
+      <div class="form-group">
+        <label for="expiry-date">Lejárati dátum:</label>
+        <input type="month" id="expiry-date" name="expiryDate" ngModel>
+      </div>
+
+      <div class="form-group">
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" ngModel placeholder="CVV" maxlength="3">
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!checkoutForm.valid" class="checkout-btn">
+      Tovább a fizetéshez
+    </button>
+  </form>
+</section>

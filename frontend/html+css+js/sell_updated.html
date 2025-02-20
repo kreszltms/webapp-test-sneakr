@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell - Sneakr Resell</title>
+    <link rel="stylesheet" href="css/sell_updated.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="home_updated.html"><img src="resources/resellicon.png" alt="Resell Sneaker Logo"></a>
+            </div>
+            <div class="search-cart">
+                <input type="text" placeholder="Mit keresel?">
+                <i class="fas fa-search"></i>
+                <a href="resell_user.html"><i style="color: #fff;" class="fas fa-user user-icon"></i></a>
+                <a href="resell_cart.html"><i style="color: #fff;" class="fas fa-shopping-cart"></i></a>
+                <i class="fas fa-bars menu-toggle"></i>
+            </div>
+        </nav>
+        <ul class="hamburger-menu">
+            <li><a href="#">Férfi</a></li>
+            <li><a href="#">Női</a></li>
+            <li><a href="#">Minőség</a></li>
+            <li><a href="about.html">Info</a></li>
+        </ul>
+    </header>
+    <main class="sell-section">
+        <h1>Termék eladása</h1>
+        <form class="sell-form">
+            <label for="upload-images">Adj hozzá legfeljebb 10 képet</label>
+            <button id="upload-images" class="upload-button">
+                <i class="fas fa-upload"></i> Fénykép feltöltése
+            </button>
+            <textarea placeholder="Pl. pontos méret, csak néhányszor viselted"></textarea>
+            <select>
+                <option>Kategória</option>
+                <option>Cipők</option>
+                <option>Kiegészítők</option>
+            </select>
+            <input type="number" placeholder="Ár (Ft)">
+            <div class="form-buttons">
+                <a href="home_updated.html">
+                <button type="button" class="cancel-button">Mégse</button></a>
+                <button type="submit" class="submit-button">Feltöltés</button>
+            </div>
+        </form>
+    </main>
+    <script>
+        // Hamburger menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        menuToggle.addEventListener('click', () => {
+            hamburgerMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
