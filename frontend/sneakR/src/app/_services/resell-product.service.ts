@@ -23,7 +23,7 @@ interface ResellShoesResponse {
   providedIn: 'root'
 })
 export class ResellProductService {
-  private apiUrl = 'http://shark-app-5llz9.ondigitalocean.app:4200/sneakRproject-1.0-SNAPSHOT/webresources/resellCipok/getAllResellShoesData';
+  private apiUrl = 'https://10.244.12.2:4200/sneakRproject-1.0-SNAPSHOT/webresources/resellCipok/getAllResellShoesData';
 
   constructor(private http: HttpClient) { }
 
